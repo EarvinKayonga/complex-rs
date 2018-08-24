@@ -1,0 +1,9 @@
+[package]
+name = "complex"
+version = "0.1.0"
+authors = ["EarvinKayonga <earvin@earvinkayonga.com"]
+publish = false
+description = Complex numbers in Rust
+
+[dependencies]
+num-traits = "^0.2"
