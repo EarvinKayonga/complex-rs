@@ -1,6 +1,8 @@
-#  Complex numbers in Rust
+#  Complex numbers in Rust 
 
-types: `Complex32, Complex64 or even Complex<i28>`
+on Rust (stable 1.28)
+
+for types like `Complex32, Complex64 or even Complex<i28>`
 
 Part of [blog post](https://earvinkayonga.com/implement-complex-numbers-in-rust)
 
@@ -9,7 +11,6 @@ Part of [blog post](https://earvinkayonga.com/implement-complex-numbers-in-rust)
 
     fn main() {
         let lo = complex::Complex32::new(3.0, 3.0);
-
         let la = complex::Complex32::new(3.0, 3.0);
 
         println!("ADD: {}", lo + la);
