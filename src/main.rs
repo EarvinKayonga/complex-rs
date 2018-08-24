@@ -33,7 +33,7 @@ pub mod complex {
         }
     }
 
-    impl<T: Copy + Number + Neg<Output = T>> Add<Complex<T>> for Complex<T> {
+    impl<T: Copy + Number > Add<Complex<T>> for Complex<T> {
         type Output = Complex<T>;
 
         fn add(self, another: Complex<T>) -> Complex<T> {
