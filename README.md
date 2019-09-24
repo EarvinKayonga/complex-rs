@@ -1,10 +1,10 @@
 #  Complex numbers in Rust 
 
-on Rust (stable 1.28)
+on Rust (stable 1.38)
 
 for types like `Complex32, Complex64 or even Complex<i28>`
 
-Part of [blog post](https://earvinkayonga.com/implement-complex-numbers-in-rust)
+Part of [blog post](https://earvinkayonga.com/posts/implement-complex-numbers-in-rust/)
 
 ```
     extern crate complex;
