@@ -91,10 +91,24 @@ impl<T: Clone + Copy + Neg<Output = T> + Number + Zero> Zero for Complex<T> {
 
 impl<T: Copy + Number + Zero + PartialOrd + Display> Display for Complex<T> {
     fn fmt(&self, f: &mut Formatter) -> Result {
-        match self.Imaginaire {
-            number if number.is_zero() => write!(f, "{}", self.Real),
-            number if number < T::zero() => write!(f, "{}{}i", self.Real, number),
-            _ => write!(f, "{}+{}i", self.Real, self.Imaginaire),
+        match self {
+            &Complex {
+                Real: real,
+                Imaginaire: im,
+            } if real.is_zero() && !im.is_zero() => write!(f, "{}i", im),
+            &Complex {
+                Real: real,
+                Imaginaire: im,
+            } if !real.is_zero() && im.is_zero() => write!(f, "{}", real),
+
+            &Complex {
+                Real: real,
+                Imaginaire: im,
+            } if im < T::zero() => write!(f, "{}{}i", real, im),
+            &Complex {
+                Real: real,
+                Imaginaire: im,
+            } => write!(f, "{}+{}i", real, im),
         }
     }
 }
@@ -137,5 +151,16 @@ mod test {
         assert_eq!(lo * la, Complex::<i128>::new(18, 0), "MULT");
         assert_eq!(lo.dot_product(la), 0, "DOT Product");
         assert_eq!(lo.conjugate(), Complex::<i128>::new(-3, 3), "Conjugate");
+    }
+
+    #[test]
+    fn test_display() {
+        let lo = Complex32::new(3.0, 3.0);
+        let la = Complex32::new(3.0, 3.0);
+
+        println!("ADD: {}", lo + la);
+        println!("MULT: {}", lo * la);
+        println!("DOT Product: ({}).({}) = {}", lo, la, lo.dot_product(la));
+        println!("Conjugate: {}", lo.conjugate());
     }
 }
