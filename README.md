@@ -1,6 +1,6 @@
 #  Complex numbers in Rust 
 
-on Rust (stable 1.46)
+on Rust (stable 1.55)
 
 for types like `Complex32, Complex64 or even Complex<i28>`
 
